@@ -6,6 +6,8 @@ const config: Config = {
     extend: {
       colors: {
         elice: 'rgb(82, 79, 161)',
+        label: '#524fa1',
+        icon_text: '#7d7e80',
         filter: {
           50: '#efeff0',
           100: '#e0e0e0',
@@ -20,8 +22,8 @@ const config: Config = {
           950: '#5e5f61',
         },
       },
-      width: {
-        '1280': '1280px',
+      lineHeight: {
+        card: '1.6',
       },
       maxWidth: {
         container: '1280px',
@@ -35,6 +37,14 @@ const config: Config = {
         elice: 'rgb(82, 79, 161)',
         search: 'rgb(201, 202, 204)',
         filter: 'rgb(225, 226, 228)',
+      },
+      width: {
+        xl_card: 'calc(25% - 12px)',
+        md_card: 'calc(33.33333% - 12px)',
+        sm_card: 'calc(50% - 12px)',
+      },
+      height: {
+        card: '338px',
       },
     },
   },

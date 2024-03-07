@@ -15,9 +15,9 @@ export default function SearchBox() {
   };
 
   return (
-    <div className="bg-search w-full">
+    <div className="w-full">
       <div
-        className={`${isFocus ? 'border-elice' : 'border-search'} flex w-full flex-row rounded border border-solid transition duration-300`}
+        className={`${isFocus ? 'border-elice' : 'border-search'} bg-search flex w-full flex-row rounded border border-solid transition duration-300`}
       >
         <div className="flex p-4 align-middle">
           <Image
