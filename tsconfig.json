@@ -26,7 +26,8 @@
       "@utils/*": ["app/utils/*"],
       "@constants/*": ["app/constants/*"],
       "@public/*": ["public"],
-      "@styles/*": ["public/styles/*"]
+      "@styles/*": ["public/styles/*"],
+      "@images/*": ["public/images/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

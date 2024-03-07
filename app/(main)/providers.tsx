@@ -1,11 +1,18 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
+import { Footer, Header } from '@components/common';
 
 export default function Providers({
   children,
 }: {
   children: React.ReactNode;
 }): React.ReactElement {
-  return <div>{children}</div>;
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
 }

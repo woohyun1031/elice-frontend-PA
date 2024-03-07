@@ -1,6 +1,6 @@
-import "@styles/globals.css";
-import React from "react";
-import Providers from "./providers";
+import '@styles/globals.css';
+import React from 'react';
+import Providers from './providers';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -18,10 +18,8 @@ export default function RootLayout({
           sizes="any"
         />
       </head>
-      <body>
-        <main>
-          <Providers>{children}</Providers>
-        </main>
+      <body className="bg-body">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
