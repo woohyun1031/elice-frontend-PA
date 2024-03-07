@@ -2,6 +2,7 @@
 
 import CourseCard from '@components/edu/body/CourseCard';
 import Filter from '@components/edu/filter/Filter';
+import Pagination from '@components/edu/pagination/Pagination';
 import SearchBox from '@components/edu/search/SearchBox';
 import React from 'react';
 
@@ -37,6 +38,9 @@ export default function Form() {
         <CourseCard />
         <CourseCard />
         <CourseCard />
+      </Wraper>
+      <Wraper className="mt-6 flex justify-center">
+        <Pagination total={20} current={10} />
       </Wraper>
     </React.Fragment>
   );

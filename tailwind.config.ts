@@ -5,6 +5,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        arrow: 'rgb(204,204,204)',
+        page: 'rgb(153,153,153)',
         elice: 'rgb(82, 79, 161)',
         label: '#524fa1',
         icon_text: '#7d7e80',
