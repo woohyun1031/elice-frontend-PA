@@ -1,5 +1,10 @@
-import React from "react";
+import React from 'react';
+import Form from './form';
 
 export default async function Page() {
-  return <main>edu page</main>;
+  return (
+    <div>      
+      <Form />
+    </div>
+  );
 }

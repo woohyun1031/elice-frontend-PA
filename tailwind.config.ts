@@ -1,13 +1,22 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      width: {
+        '1280': '1280px',
+      },
+      maxWidth: {
+        container: '1280px',
+      },
+      backgroundColor: {
+        body: 'rgb(240, 241, 243);',
+        search: 'rgb(255, 255, 255)',
+      },
+      borderColor: {
+        elice: 'rgb(82, 79, 161)',
+        search: 'rgb(201, 202, 204)',
       },
     },
   },
