@@ -13,15 +13,18 @@ export default function Providers({
   const searchParams = useSearchParams();
   const [offsetCnt, setOffsetCnt] = React.useState(0);
 
+  const contextsValue = React.useMemo(
+    () => ({ offset: offsetCnt, setOffset: setOffsetCnt }),
+    [offsetCnt, setOffsetCnt],
+  );
+
   React.useEffect(() => {
     setOffsetCnt(0);
   }, [searchParams]);
 
   return (
     <Suspense>
-      <PaginationContext.Provider
-        value={{ offset: offsetCnt, setOffset: setOffsetCnt }}
-      >
+      <PaginationContext.Provider value={contextsValue}>
         <Header />
         {children}
         <Footer />

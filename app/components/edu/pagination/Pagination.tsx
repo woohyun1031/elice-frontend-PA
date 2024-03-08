@@ -53,10 +53,10 @@ export default function Pagination({
     );
     if (response.ok) {
       const result = await response.json();
-
       setOffset((num - 1) * PAGINATION.PAGES_LIMIT);
       setCourses(result.courses);
       setCourseCount(result.course_count);
+      window.scrollTo(0, 0);
     }
   }
 
