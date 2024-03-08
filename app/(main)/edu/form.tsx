@@ -6,9 +6,15 @@ import { BodyForms, FilterForms, SearchForms } from '@containers/edu';
 export default function Form() {
   return (
     <Fragment>
-      <SearchForms />
-      <FilterForms />
-      <BodyForms />
+      <Suspense>
+        <SearchForms />
+      </Suspense>
+      <Suspense>
+        <FilterForms />
+      </Suspense>
+      <Suspense>
+        <BodyForms />
+      </Suspense>
     </Fragment>
   );
 }
