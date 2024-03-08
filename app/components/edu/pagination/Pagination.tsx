@@ -3,8 +3,7 @@
 import getOrgCourseList from '@apis/getOrgCourseList';
 import { COURSE_CONVERT_OBJECTS } from '@constants/course';
 import { PAGINATION } from '@constants/pagination';
-import { CoursesContext } from 'app/(main)/edu/form';
-import { PaginationContext } from 'app/(main)/providers';
+import { CoursesContext, PaginationContext } from '@contexts/contexts';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
 import Arrow from './Arrow';

@@ -23,6 +23,7 @@
       "@components/*": ["app/components/*"],
       "@constants/*": ["app/constants/*"],
       "@containers/*": ["app/containers/*"],
+      "@contexts/*": ["app/contexts/*"],
       "@hooks/*": ["app/hooks/*"],
       "@mocks/*": ["app/mocks/*"],
       "#types/*": ["app/types/*"],

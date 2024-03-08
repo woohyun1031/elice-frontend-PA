@@ -1,13 +1,9 @@
 'use client';
 
-import React, { createContext, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Footer, Header } from '@components/common';
 import { useSearchParams } from 'next/navigation';
-
-export const PaginationContext = createContext({
-  offset: 0,
-  setOffset: (value: any) => {},
-});
+import { PaginationContext } from '@contexts/contexts';
 
 export default function Providers({
   children,

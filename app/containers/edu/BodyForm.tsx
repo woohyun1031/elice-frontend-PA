@@ -6,7 +6,7 @@ import Pagination from '@components/edu/pagination/Pagination';
 import SectionWraper from '@components/edu/SectionWraper';
 import { IOrgCourseListResponses } from '#types/course';
 
-export default function BodyForms({
+export default function BodyForm({
   course_count,
   courses = [],
 }: IOrgCourseListResponses) {
