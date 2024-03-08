@@ -1,4 +1,6 @@
-const COURSE_CONVERT_OBJECTS: Record<string, (v: string) => any> = {
+import { EssentialCourseKeys } from '#types/course';
+
+export const COURSE_CONVERT_OBJECTS: Record<string, (v: string) => any> = {
   keyword: (value) => {
     return { title: `%${value}%` };
   },
@@ -14,4 +16,11 @@ const COURSE_CONVERT_OBJECTS: Record<string, (v: string) => any> = {
   },
 };
 
-export default COURSE_CONVERT_OBJECTS;
+export const ESSENTIAL_COURSE_KEYS: EssentialCourseKeys = [
+  'title',
+  'logo_file_url',
+  'short_description',
+  'enroll_type',
+  'is_free',
+  'tags',
+];

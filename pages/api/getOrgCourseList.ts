@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { IOrgCourseListResponses } from '#types/course';
 import { api } from './index';
+import { ESSENTIAL_COURSE_KEYS } from '@constants/course';
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,7 +16,14 @@ export default async function handler(
         },
       },
     );
-    const result = { ...response.data };
+    const result = {
+      course_count: response.data.course_count,
+      courses: response.data.courses.map((course) => {
+        return ESSENTIAL_COURSE_KEYS.reduce((acc, cur) => {
+          return { ...acc, [cur]: course[cur] };
+        }, {});
+      }),
+    };
     res.status(200).json(result);
   } catch (e) {
     console.log('e:::', e);

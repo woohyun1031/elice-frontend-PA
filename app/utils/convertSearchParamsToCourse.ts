@@ -1,4 +1,4 @@
-import COURSE_CONVERT_OBJECTS from '@constants/course';
+import { COURSE_CONVERT_OBJECTS } from '@constants/course';
 
 export default function convertSearchParamsToCourseObject(
   searchParams: Record<string, string | string[]>,
