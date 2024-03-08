@@ -9,7 +9,8 @@ export default function PageNum({
 }) {
   return (
     <button
-      className={`hover:text-elice hover:bg-body h-6 w-6 cursor-pointer rounded duration-300
+      type="button"
+      className={`h-6 w-6 cursor-pointer rounded duration-300 hover:bg-body hover:text-elice
        ${isCurrent ? 'bg-elice text-white' : 'text-page'}`}
     >
       {value}

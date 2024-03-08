@@ -25,11 +25,11 @@ export default function Pagination({
 
   return (
     <div className="flex justify-center">
-      <Arrow isEnable={true} isLeft />
+      <Arrow isEnable isLeft />
       {pages.map((num) => (
-        <PageNum value={num} isCurrent={num == current} />
+        <PageNum value={num} isCurrent={num === current} />
       ))}
-      <Arrow isEnable={false} />
+      <Arrow />
     </div>
   );
 }

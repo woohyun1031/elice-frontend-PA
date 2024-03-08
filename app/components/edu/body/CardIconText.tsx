@@ -13,9 +13,9 @@ export default function CardIconText({
   value: string;
 }) {
   return (
-    <div className="mb-1 flex items-center gap-x-2">
+    <div key={id} className="mb-1 flex items-center gap-x-2">
       <Image src={src} alt={label} width={24} height={24} />
-      <div className="text-icon_text inline-block">
+      <div className="inline-block text-icon_text">
         {label}: {value}
       </div>
     </div>

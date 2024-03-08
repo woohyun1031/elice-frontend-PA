@@ -1,15 +1,17 @@
-import Image from 'next/image';
 import React from 'react';
 
 export default function Arrow({
   isEnable = false,
   isLeft = false,
 }: {
-  isEnable: boolean;
+  isEnable?: boolean;
   isLeft?: boolean;
 }) {
   return (
-    <button className={`${isEnable ? 'cursor-pointer' : 'cursor-not-allowed'}`}>
+    <button
+      type="button"
+      className={`${isEnable ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+    >
       {isLeft ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
