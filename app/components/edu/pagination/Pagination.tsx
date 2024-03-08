@@ -14,12 +14,15 @@ import PageNum from './PageNum';
 
 const getPageCount = (endPage: number, currentPage: number) => {
   if (!currentPage) return [];
-  const point = Math.floor(PAGINATION.SHOW / 2);
-  const start = Math.max(currentPage - point, 1);
-  const end = Math.min(currentPage + point, endPage);
-  const length = end - start;
+  const slicePoint = Math.floor(PAGINATION.SHOW / 2);
+  const startShow = Math.max(currentPage - slicePoint, 1);
+  const endShow = Math.min(currentPage + slicePoint, endPage);
+  let length = endShow - startShow;
 
-  return new Array(length + 1).fill(0).map((_, i) => start + i);
+  if (endPage >= PAGINATION.SHOW && endShow <= PAGINATION.SHOW) {
+    length = PAGINATION.SHOW - startShow;
+  }
+  return new Array(length + 1).fill(0).map((_, i) => startShow + i);
 };
 
 export default function Pagination({
