@@ -1,8 +1,7 @@
 'use client';
 
-import useDebounce from '@hooks/useDebounce';
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
 
 interface ISearchBoxProps {
   value?: string;

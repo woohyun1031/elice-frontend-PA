@@ -11,7 +11,7 @@ export default function FilterForm() {
     <Fragment>
       <SectionWraper className="border border-solid border-filter">
         {filters.map((filter: IFilter) => (
-          <Filter {...filter} />
+          <Filter key={filter.id} {...filter} />
         ))}
       </SectionWraper>
     </Fragment>

@@ -11,7 +11,7 @@ export default function SearchForms() {
   const { onSubmit } = useOnSubmit();
   const searchParams = useSearchParams();
 
-  const initValue = searchParams?.get('keyword');
+  const initValue = searchParams?.get('keyword') ?? '';
   const [value, setValue] = React.useState(`${initValue}`);
   const targetValue = useDebounce(value ?? '', 300);
 

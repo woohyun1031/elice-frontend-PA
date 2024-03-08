@@ -46,6 +46,7 @@ export default function Filter({ id: filterId, label, chips }: IFilterProps) {
         {chips.map((chip) => (
           <Chip
             {...chip}
+            key={chip.id}
             isActive={activeChips.some((i) => i === chip.id)}
             onChange={handleOnChange}
           />
