@@ -1,9 +1,15 @@
 'use client';
 
+import useDebounce from '@hooks/useDebounce';
 import Image from 'next/image';
 import React from 'react';
 
-export default function SearchBox() {
+interface ISearchBoxProps {
+  value?: string;
+  onChange: (value: string) => void;
+}
+
+export default function SearchBox({ value, onChange }: ISearchBoxProps) {
   const [isFocus, setIsFocus] = React.useState(false);
 
   const handleFocus = () => {
@@ -14,10 +20,14 @@ export default function SearchBox() {
     setIsFocus(false);
   };
 
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+  };
+
   return (
     <div className="w-full">
       <div
-        className={`${isFocus ? 'border-elice' : 'border-search'} bg-search flex w-full flex-row rounded border border-solid transition duration-300`}
+        className={`${isFocus ? 'border-elice' : 'border-search'} flex w-full flex-row rounded border border-solid bg-search transition duration-300`}
       >
         <div className="flex p-4 align-middle">
           <Image
@@ -31,6 +41,8 @@ export default function SearchBox() {
         </div>
         <div className="relative mx-4 flex w-full overflow-hidden">
           <input
+            value={value}
+            onChange={handleOnChange}
             placeholder="배우고 싶은 언어, 기술을 검색해 보세요"
             className="my-3 w-full text-sm focus:outline-none "
             onFocus={handleFocus}
