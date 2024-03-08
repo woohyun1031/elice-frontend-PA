@@ -5,8 +5,9 @@ import CardDescription from './CardDescription';
 import CardIconText from './CardIconText';
 import CardLabel from './CardLabel';
 import CardTitle from './CardTitle';
+import { IOrgCourse } from '#types/course';
 
-export default function CourseCard() {
+export default function CourseCard(props: IOrgCourse) {
   return (
     <Link
       href="/"
@@ -15,8 +16,8 @@ export default function CourseCard() {
       <div className="relative h-card w-full rounded-lg bg-white">
         <div className="px-6 py-7">
           <CardLabel label="미설정" />
-          <CardTitle label="[Pluralsight] Microsoft Certified: Azure Data Engineer Associate (DP-203)" />
-          <CardDescription label="[Pluralsight] Governance, Risk, and Compliance for CompTIA Security+" />
+          <CardTitle label={props.title} />
+          <CardDescription label={props.short_description} />
           <div className="flex items-start justify-between">
             <div className="flex flex-col">
               <CardIconText
@@ -40,7 +41,7 @@ export default function CourseCard() {
             </div>
             <div>
               <Image
-                src="https://cdn-api.elice.io/api/file/e8b77f7af0d44cf6bee8c287b471fc5c/algorithm.png?se=2024-03-14T00%3A15%3A00Z&sp=r&sv=2021-12-02&sr=b&sig=pDwE1ZmB9GICClEMHjV326KE7eriGPlolyTdFquqGZA%3D"
+                src={props.logo_file_url ?? ''}
                 alt="Card Logo"
                 width={52}
                 height={52}
@@ -52,7 +53,7 @@ export default function CourseCard() {
         <div className="absolute bottom-0 w-full px-6 pb-5 pt-0">
           <div className="w-full border-t border-solid border-gray-200 pt-4">
             <span className="inline-block text-base font-bold leading-normal text-elice">
-              구독
+              {props.enroll_type ? '구독' : props.is_free ? '무료' : '유료'}
             </span>
           </div>
         </div>

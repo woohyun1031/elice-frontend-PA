@@ -2,8 +2,9 @@
 
 import React, { Fragment, Suspense } from 'react';
 import { BodyForms, FilterForms, SearchForms } from '@containers/edu';
+import { IOrgCourseListResponses } from '#types/course';
 
-export default function Form() {
+export default function Form(props: IOrgCourseListResponses) {
   return (
     <Fragment>
       <Suspense>
@@ -13,7 +14,7 @@ export default function Form() {
         <FilterForms />
       </Suspense>
       <Suspense>
-        <BodyForms />
+        <BodyForms {...props} />
       </Suspense>
     </Fragment>
   );

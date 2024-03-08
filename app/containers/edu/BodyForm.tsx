@@ -4,23 +4,28 @@ import React, { Fragment } from 'react';
 import CourseCard from '@components/edu/body/CourseCard';
 import Pagination from '@components/edu/pagination/Pagination';
 import SectionWraper from '@components/edu/SectionWraper';
+import { IOrgCourseListResponses } from '#types/course';
 
-export default function BodyForms() {
+export default function BodyForms({
+  course_count,
+  courses = [],
+}: IOrgCourseListResponses) {
   return (
     <Fragment>
       <SectionWraper>
         <div className="border-b border-solid border-gray-200 py-3">
-          <div className="inline-block text-xs font-semibold">전체 227개</div>
+          <div className="inline-block text-xs font-semibold">
+            전체 {course_count}개
+          </div>
         </div>
       </SectionWraper>
       <SectionWraper className="flex flex-wrap gap-4">
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+        {courses.map((course) => (
+          <CourseCard {...course} />
+        ))}
       </SectionWraper>
       <SectionWraper className="mt-6 flex justify-center">
-        <Pagination total={20} current={10} />
+        <Pagination total={course_count} courseLength={courses.length} />
       </SectionWraper>
     </Fragment>
   );

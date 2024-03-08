@@ -24,7 +24,6 @@ export default async function Page({
   );
 
   const res = await response.json();
-  console.log(res);
 
   return (
     <Fragment>
