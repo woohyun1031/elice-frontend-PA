@@ -17,6 +17,7 @@ export const COURSE_CONVERT_OBJECTS: Record<string, (v: string) => any> = {
 };
 
 export const ESSENTIAL_COURSE_KEYS: EssentialCourseKeys = [
+  'id',
   'title',
   'logo_file_url',
   'short_description',

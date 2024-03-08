@@ -21,7 +21,7 @@ export default function BodyForms({
       </SectionWraper>
       <SectionWraper className="flex flex-wrap gap-4">
         {courses.map((course) => (
-          <CourseCard {...course} />
+          <CourseCard key={course.id} {...course} />
         ))}
       </SectionWraper>
       <SectionWraper className="mt-6 flex justify-center">

@@ -2,16 +2,19 @@ import React from 'react';
 
 export default function PageNum({
   value,
-  isCurrent,
+  isEnable,
+  onClick,
 }: {
   value: number;
-  isCurrent: boolean;
+  isEnable: boolean;
+  onClick: () => void;
 }) {
   return (
     <button
       type="button"
       className={`h-6 w-6 cursor-pointer rounded duration-300 hover:bg-body hover:text-elice
-       ${isCurrent ? 'bg-elice text-white' : 'text-page'}`}
+       ${isEnable ? 'bg-elice text-white' : 'text-page'}`}
+      onClick={onClick}
     >
       {value}
     </button>

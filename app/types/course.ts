@@ -1,4 +1,5 @@
 export interface IOrgCourse {
+  id: number;
   title: string;
   logo_file_url: null | string;
   short_description: string;
@@ -8,9 +9,6 @@ export interface IOrgCourse {
 }
 
 export interface IOrgCourseListResponses {
-  _result: {
-    status: 'ok' | 'fail';
-  };
   course_count: number;
   courses: IOrgCourse[];
 }

@@ -3,14 +3,17 @@ import React from 'react';
 export default function Arrow({
   isEnable = false,
   isLeft = false,
+  onClick,
 }: {
   isEnable?: boolean;
   isLeft?: boolean;
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }) {
   return (
     <button
       type="button"
       className={`${isEnable ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+      onClick={onClick}
     >
       {isLeft ? (
         <svg
