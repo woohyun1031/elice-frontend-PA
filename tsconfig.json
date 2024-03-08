@@ -21,12 +21,12 @@
     "paths": {
       "@apis/*": ["app/apis/*"],
       "@components/*": ["app/components/*"],
+      "@constants/*": ["app/constants/*"],
       "@containers/*": ["app/containers/*"],
       "@hooks/*": ["app/hooks/*"],
+      "@mocks/*": ["app/mocks/*"],
       "#types/*": ["app/types/*"],
       "@utils/*": ["app/utils/*"],
-      "@constants/*": ["app/constants/*"],
-      "@mocks/*": ["app/mocks/*"],
       "@public/*": ["public"],
       "@styles/*": ["public/styles/*"],
       "@images/*": ["public/images/*"]

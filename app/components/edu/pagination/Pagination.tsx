@@ -1,12 +1,10 @@
 'use client';
 
+import getOrgCourseList from '@apis/getOrgCourseList';
 import { COURSE_CONVERT_OBJECTS } from '@constants/course';
 import { PAGINATION } from '@constants/pagination';
-import convertObjectToQueryString from '@utils/convertObjectToQueryString';
-import convertSearchParamsToCourseObject from '@utils/convertSearchParamsToCourse';
 import { CoursesContext } from 'app/(main)/edu/form';
 import { PaginationContext } from 'app/(main)/providers';
-import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
 import Arrow from './Arrow';
@@ -16,13 +14,14 @@ const getPageCount = (endPage: number, currentPage: number) => {
   if (!currentPage) return [];
   const slicePoint = Math.floor(PAGINATION.SHOW / 2);
   const startShow = Math.max(currentPage - slicePoint, 1);
-  const endShow = Math.min(currentPage + slicePoint, endPage);
-  let length = endShow - startShow;
-
-  if (endPage >= PAGINATION.SHOW && endShow <= PAGINATION.SHOW) {
-    length = PAGINATION.SHOW - startShow;
+  const newPages = new Array(PAGINATION.SHOW).fill(0);
+  if (startShow + PAGINATION.SHOW - 1 >= endPage) {
+    return newPages
+      .map((_, i) => endPage - i)
+      .filter((v) => v >= 1)
+      .sort();
   }
-  return new Array(length + 1).fill(0).map((_, i) => startShow + i);
+  return newPages.map((_, i) => startShow + i).filter((v) => v <= endPage);
 };
 
 export default function Pagination({
@@ -49,20 +48,17 @@ export default function Pagination({
       },
       {},
     );
-    const courseObject = convertSearchParamsToCourseObject(paramsObject);
-    const queryString = convertObjectToQueryString({
-      ...courseObject,
-      offset: `${(num - 1) * PAGINATION.PAGES_LIMIT}`,
-      count: `${PAGINATION.PAGES_LIMIT}`,
-    });
-    await axios
-      .get(`${process.env.NEXT_PUBLIC_URL}/api/getOrgCourseList?${queryString}`)
-      .then((res) => res.data)
-      .then((data) => {
-        setOffset((num - 1) * PAGINATION.PAGES_LIMIT);
-        setCourses(data.courses);
-        setCourseCount(data.course_count);
-      });
+    const response = await getOrgCourseList(
+      paramsObject,
+      (num - 1) * PAGINATION.PAGES_LIMIT,
+    );
+    if (response.ok) {
+      const result = await response.json();
+
+      setOffset((num - 1) * PAGINATION.PAGES_LIMIT);
+      setCourses(result.courses);
+      setCourseCount(result.course_count);
+    }
   }
 
   return (
