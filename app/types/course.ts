@@ -9,6 +9,7 @@ export interface IOrgCourse {
 }
 
 export interface IOrgCourseListResponses {
+  message?: string;
   course_count: number;
   courses: IOrgCourse[];
 }

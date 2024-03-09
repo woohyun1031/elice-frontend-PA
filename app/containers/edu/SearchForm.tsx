@@ -16,7 +16,7 @@ export default function SearchForms() {
 
   React.useEffect(() => {
     onSubmit('keyword', [targetValue]);
-  }, [targetValue]);
+  }, [targetValue, onSubmit]);
 
   return (
     <Fragment>
