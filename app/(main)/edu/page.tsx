@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { IDefaultPageProps } from '#types/default';
-import Form from './form';
 import getOrgCourseList from '@apis/getOrgCourseList';
+import Form from './form';
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';

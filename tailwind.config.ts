@@ -4,9 +4,12 @@ const config: Config = {
   content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      screens: {
+        elice: '1232px',
+      },
       colors: {
-        arrow: 'rgb(204,204,204)',
-        page: 'rgb(153,153,153)',
+        arrow: '#ccc',
+        page: '#999',
         elice: 'rgb(82, 79, 161)',
         label: '#524fa1',
         icon_text: '#7d7e80',
@@ -23,6 +26,7 @@ const config: Config = {
           900: '#6b6c6e',
           950: '#5e5f61',
         },
+        css_gray: 'rgb(128,128,128)',
       },
       lineHeight: {
         card: '1.6',
@@ -41,7 +45,7 @@ const config: Config = {
         filter: 'rgb(225, 226, 228)',
       },
       width: {
-        xl_card: 'calc(25% - 12px)',
+        elice_card: 'calc(25% - 12px)',
         md_card: 'calc(33.33333% - 12px)',
         sm_card: 'calc(50% - 12px)',
       },

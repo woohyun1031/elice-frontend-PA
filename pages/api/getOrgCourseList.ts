@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { IOrgCourseListResponses } from '#types/course';
-import { api } from './index';
 import { ESSENTIAL_COURSE_KEYS } from '@constants/course';
+import { api } from './index';
 
 export default async function handler(
   req: NextApiRequest,

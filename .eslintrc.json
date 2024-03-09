@@ -18,6 +18,8 @@
     "react/jsx-fragments": 0,
     "arrow-body-style": 0,
     "consistent-return": 0,
-    "no-useless-return": 0
+    "no-useless-return": 0,
+    "react/destructuring-assignment": 0,
+    "no-nested-ternary": 0
   }
 }

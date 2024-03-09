@@ -3,7 +3,6 @@
 import React, { Fragment } from 'react';
 import { useSearchParams } from 'next/navigation';
 import SearchBox from '@components/edu/search/SearchBox';
-import SectionWraper from '@components/edu/SectionWraper';
 import useOnSubmit from '@hooks/useOnSubmit';
 import useDebounce from '@hooks/useDebounce';
 
@@ -21,9 +20,7 @@ export default function SearchForms() {
 
   return (
     <Fragment>
-      <SectionWraper>
-        <SearchBox value={value} onChange={setValue} />
-      </SectionWraper>
+      <SearchBox value={value} onChange={setValue} />
     </Fragment>
   );
 }

@@ -1,6 +1,9 @@
 import { EssentialCourseKeys } from '#types/course';
 
-export const COURSE_CONVERT_OBJECTS: Record<string, (v: string) => any> = {
+export const COURSE_CONVERT_OBJECTS: Record<
+  string,
+  (v: string) => Record<string, Object> | undefined
+> = {
   keyword: (value) => {
     return { title: `%${value}%` };
   },

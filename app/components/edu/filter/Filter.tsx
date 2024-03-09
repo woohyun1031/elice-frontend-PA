@@ -30,7 +30,7 @@ export default function Filter({ id: filterId, label, chips }: IFilterProps) {
 
   React.useEffect(() => {
     onSubmit(filterId, activeChips);
-  }, [filterId, activeChips]);
+  }, [filterId, activeChips, onSubmit]);
 
   return (
     <div

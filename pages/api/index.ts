@@ -5,7 +5,8 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(
-  async (config) => {
+  async (conf) => {
+    const config = { ...conf };
     if (config.headers) {
       config.headers['Access-Control-Allow-Origin'] = '*';
       config.headers['Access-Control-Allow-Methods'] =

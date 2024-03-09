@@ -1,21 +1,23 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { IOrgCourse } from '#types/course';
 import CardDescription from './CardDescription';
 import CardIconText from './CardIconText';
 import CardLabel from './CardLabel';
 import CardTitle from './CardTitle';
-import { IOrgCourse } from '#types/course';
 
 export default function CourseCard(props: IOrgCourse) {
+  const freeType = props.enroll_type ? '구독' : props.is_free ? '무료' : '유료';
   return (
     <Link
-      href="/"
-      className="flex w-full cursor-pointer flex-col align-middle sm:w-sm_card md:w-md_card xl:w-xl_card"
+      href={`https://academy.elice.io/courses/${props.id}`}
+      className="elice:w-elice_card flex w-full cursor-pointer flex-col align-middle duration-300 hover:-translate-y-0.5 sm:w-sm_card md:w-md_card"
+      target="_blank"
     >
       <div className="relative h-card w-full rounded-lg bg-white">
-        <div className="px-6 py-7">
-          <CardLabel label="미설정" />
+        <div className="px-6 pt-7">
+          <CardLabel label={freeType ?? ''} />
           <CardTitle label={props.title} />
           <CardDescription label={props.short_description} />
           <div className="flex items-start justify-between">
@@ -24,7 +26,7 @@ export default function CourseCard(props: IOrgCourse) {
                 id={1}
                 src="/images/difficulty.svg"
                 label="난이도"
-                value="중급"
+                value="미설정"
               />
               <CardIconText
                 src="/images/class.svg"
@@ -39,21 +41,25 @@ export default function CourseCard(props: IOrgCourse) {
                 id={3}
               />
             </div>
-            <div>
-              <Image
-                src={props.logo_file_url ?? ''}
-                alt="Card Logo"
-                width={52}
-                height={52}
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
+            {props.logo_file_url ? (
+              <div>
+                <Image
+                  src={props.logo_file_url}
+                  alt="Card Logo"
+                  width={52}
+                  height={52}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            ) : null}
           </div>
         </div>
-        <div className="absolute bottom-0 w-full px-6 pb-5 pt-0">
+        <div className="absolute bottom-0 w-full px-6 pb-7 pt-0">
           <div className="w-full border-t border-solid border-gray-200 pt-4">
-            <span className="inline-block text-base font-bold leading-normal text-elice">
-              {props.enroll_type ? '구독' : props.is_free ? '무료' : '유료'}
+            <span
+              className={`inline-block text-base font-bold leading-normal ${freeType === '구독' ? 'text-elice' : freeType === '무료' ? 'text-green-500' : 'text-gray-900'}`}
+            >
+              {freeType ?? ''}
             </span>
           </div>
         </div>

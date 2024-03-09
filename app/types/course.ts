@@ -13,4 +13,9 @@ export interface IOrgCourseListResponses {
   courses: IOrgCourse[];
 }
 
+export interface IOrgCourseListRequests {
+  course_count: number;
+  courses: IOrgCourse[];
+}
+
 export type EssentialCourseKeys = (keyof IOrgCourse)[];
