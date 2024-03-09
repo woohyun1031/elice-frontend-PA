@@ -1,7 +1,7 @@
-- [Elice Frontend Team PA, Course Search](#elice-frontend-team-pa--course-search)
+- [Elice Frontend Team PA Course Search](#elice-frontend-team-pa-course-search)
   - [목표](#목표)
   - [개발 환경](#개발-환경)
-  - [로컬 실행](#로컬-환경)
+  - [로컬 실행](#로컬-실행)
   - [임시 배포 URL](#임시-배포-url)
   - [프로젝트 구성](#프로젝트-구성)
   - [주요 기능 구현](#주요-기능-구현)
@@ -17,9 +17,10 @@
     - [useSearchParams 함수 빌드 에러](#usesearchparams-함수-빌드-에러)
     - [cotext api에서 발생하는 불필요한 리렌더링](#cotext-api에서-발생하는-불필요한-리렌더링)
 
-[이미지]
+  
+<img width="1510" alt="스크린샷 2024-03-09 오후 5 52 21" src="https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/d8634877-8fc5-490f-bfe1-488353b3a63d">
 
-# Elice Frontend Team PA, Course Search
+# Elice Frontend Team PA Course Search
 
 ## 목표
 
@@ -61,7 +62,7 @@ yarn run dev
 
 - https://elice-frontend-pa-zeta.vercel.app
 
-임시 배포된 어플리케이션은 과제 기간 이후 삭제될 예정입니다. Vercel을 사용하여 배포하였습니다.
+임시 배포된 어플리케이션은 과제 기간 이후 삭제될 예정입니다. Vercel을 사용하여 배포했습니다.  
 
 ---
 
@@ -90,7 +91,7 @@ yarn run dev
    ┗ 📂 styles
 ```
 
-프로젝트 구조는 크게 라우팅을 담당하는 `/app`폴더와 API 서버를 담당하는 `/pages`폴더로 두 개의 라우터로 분리되어 있다.
+프로젝트 구조는 크게 라우팅을 담당하는 `/app`폴더와 API 서버를 담당하는 `/pages`폴더로 두 개의 라우터로 분리되어 있습니다.
 
 - **app**
   - **(main)**
@@ -116,23 +117,23 @@ yarn run dev
 
 ### 1. UI 구현 요구사항
 
-[이미지]  
-제시되어있는 요구사항에 맞춰 UI를 구현하였다.
+![ezgif com-video-to-gif-converter](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/f352783f-00d2-486c-8b9c-3f13c4020fcc)
+UI는 제시되어있는 요구사항에 맞춰 구현했습니다.
 
-제한되어있는 시간내에 최대한의 효율을 만들어내기 위해 Tailwind CSS를 도입하였다.  
+제한되어있는 시간내에 최대한의 효율을 만들어내기 위해 Tailwind CSS를 도입했습니다.
 클래스명을 따로 고려하지 않는 이점과 CSS파일을 별도로 관리하지 않고 주어진 기능에만  
-집중할 수 있게 도와주는 장점으로 `Tailwind CSS`를 선택하였다.
+집중할 수 있게 도와주는 장점으로 `Tailwind CSS`를 선택하게 되었습니다.
 
-1232px 기준으로 4개의 Course 카드가 들어가게 하기 위해 `calc(25% - 12px)`로 카드 사이즈를 지정하였다.
+1232px 기준으로 4개의 Course 카드가 들어가게 하기 위해 `calc(25% - 12px)`로 카드 사이즈를 지정했습니다.
 
 ### 2. 300ms debounced search
 
-[이미지]  
-검색기능은 url query 방식으로 동작한다. 로컬 input과 url을 동기화를 시키려면
-상당한 부담이 될 수 있다.  
-요구사항에 맞춰 300ms의 debounce를 걸어주는 `useDebounce` 커스텀 훅을
-제작하였다.  
-간단하게 리액트 기본 훅으로 구현하여 연속된 url입력을 방지하고 불필요한 API 호출을 최소화하였다.
+  
+검색기능은 url query 방식으로 동작합니다. 로컬 input과 url을 동기화를 시키려면  
+상당한 부담이 될 수 있기에 요구사항에 맞춰 300ms의 debounce를 걸어주는 `useDebounce` 커스텀 훅을
+제작했습니다.    
+간단하게 리액트 기본 훅으로 구현하여 연속된 url입력을 방지하고 불필요한 API 호출을 최소화시켰습니다.
+![ezgif com-video-to-gif-converter (1)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/8f5f428e-95a9-4fd4-bdad-cbe341aca699)
 
 ```TypeScript
 import React from 'react';
@@ -156,11 +157,12 @@ export default function useDebounce(value: string, delay: number = 300) {
 
 ### 3. url query를 사용한 Filter Search 구현
 
-[이미지]  
+![ezgif com-video-to-gif-converter (2)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/842cf94e-73aa-4c5e-b1c2-bcab3930a4af)
+ 
 브라우저를 새로고침을해도 선택된 필터가 유지될수 있도록 하기 위해 url query를 사용하여 Filter와 Search를  
-구현하였다. `useOnSubmit` 커스텀 훅을 구현하여 Filter와 Search에서 각각 search params를 수정할 수 있게 만들어준다.  
-search params가 변경되면 서버컴포넌트에서 요청을 보내 courses를 받아 props로 넘겨주는 방식으로 진행하였다.
-프로젝트를 진행하면서 컴포넌트와 함수가 순수 본연의 역할만을 수행할 수 있게 최대한 분리시켜 실행이 될 수 있도록 제작을 하였다.
+구현했습니다. `useOnSubmit` 커스텀 훅으로 Filter와 Search에서 각각 search params를 수정할 수 있게 만들어주었습니다.  
+search params가 변경되면 서버컴포넌트에서 요청을 보내 courses를 받아 props로 넘겨주는 방식으로 진행했습니다.    
+프로젝트를 진행하면서 컴포넌트와 함수가 순수 본연의 역할만을 수행할 수 있게 최대한 분리시켜 실행이 될 수 있도록 제작했습니다.    
 
 ```TypeScript
 export type TOnSubmitReturn = {
@@ -190,20 +192,20 @@ export default function useOnSubmit(): TOnSubmitReturn {
 
 ### 4. 라이브러리를 사용하지 않은 페이지네이션
 
-페이지네이션에는 주요한 두 가지 조건이 있다.
+페이지네이션에는 주요한 두 가지 조건이 있습니다.  
 
 1. 현재 페이지 기준 앞쪽으로 최대 4개, 뒷쪽으로 최대 4개의 페이지를 더 표시한다.
 2. 검색 필터가 변경되면 첫 페이지로 초기화된다.
 
-먼저 현재 페이지 기준으로 앞쪽,뒷쪽으로 각각 4개씩 최대 총 9개의 페이지를 구현할 수 있게 만들었다.  
-처음 레퍼런스 페이지에서 보여진 페이지 개수가 5개인 걸 감안하여, 동적으로 보여질 페이지의 개수를 지정할 수 있게 구현하였다.
+먼저 현재 페이지 기준으로 앞쪽,뒷쪽으로 각각 4개씩 최대 총 9개의 페이지를 구현할 수 있게 만들었습니다.  
+처음 레퍼런스 페이지에서 보여진 페이지 개수가 5개인 걸 감안하여, 동적으로 보여질 페이지의 개수를 지정할 수 있게 구현했습니다.
 
-[이미지]
+![ezgif com-video-to-gif-converter (3)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/42dc408a-7234-42a4-85e1-0337f51cd580)
 
 url query로 서버컴포넌트에서 요청을 보내는게 아닌 클라이언트 컴포넌트에서 요청을 보내고  
-context api로 props drilling을 하여 courses 전역 변수를 구현하였다.  
+context api로 props drilling을 하여 courses 전역 변수를 구현했습니다.
 offset값도 마찬가지로 search params가 변경되면 초기화가 되어야 하기에 위와 마찬가지로  
-전역변수로 구현하였다.
+전역변수로 구현했습니다.
 
 ```TypeScript
 // /contexts/contexts.ts
@@ -230,28 +232,29 @@ setCourses(result.courses);
 
 ### 5. Middleware API를 사용한 데이터 요청 구현
 
-클라이언트와 엘리스 서버를 이어주는 API Routes를 사용한 API 서버로 데이터를 요청받았다.  
+API Routes를 사용한 API 서버로 데이터를 요청받았습니다.  
 클라이언트와 API 서버를 같은 origin으로 맞추어 CORS문제를 해결하고 "서버 to 서버" 방식으로 진행하였으며  
-course를 구성하기위한 필수 data만 필터링하여 클라이언트로 전달하였다.
+course를 구성하기위한 필수 data만 필터링하여 클라이언트로 전달했습니다.
 
 ```TypeScript
-import React from 'react';
+    const response = await api.get<IOrgCourseListResponses>(
+      '/org/academy/course/list/',
+      {
+        params: {
+          ...req.query,
+        },
+      },
+    );
+    const result = {
+      course_count: response.data.course_count,
+      courses: response.data.courses.map((course) => {
+        return ESSENTIAL_COURSE_KEYS.reduce((acc, cur) => {
+          return { ...acc, [cur]: course[cur] };
+        }, {});
+      }),
+    };
 
-export default function useDebounce(value: string, delay: number = 300) {
- const [debouncedValue, setDebouncedValue] = React.useState(value);
-
- React.useEffect(() => {
-   const timer = setTimeout(() => {
-     setDebouncedValue(value);
-   }, delay);
-
-   return () => {
-     clearTimeout(timer);
-   };
- }, [value, delay]);
-
- return debouncedValue;
-}
+    res.status(200).json(result);
 ```
 
 ## 추가 기능
@@ -259,7 +262,7 @@ export default function useDebounce(value: string, delay: number = 300) {
 ### course 파싱과정 하드코딩 없이 동적으로 가능하게 구현
 
 필터의 항목들은 동적으로 추가가 될 가능성이 있는 컴포넌트로 판단하여,  
-추가로 필요한 필터를 상수에만 입력하여 동적으로 필터 추가 및 파싱이 가능하도록 설계하였다.
+추가로 필요한 필터를 상수에만 입력하여 동적으로 필터 추가 및 파싱이 가능하도록 설계했습니다.
 
 ```TypeScript
 // /constants/course.ts
@@ -302,17 +305,19 @@ export default function convertSearchParamsToCourseObject(
 ```
 
 `convertSearchParamsToCourseObject`에서 필요한 search params만을 `COURSE_CONVERT_OBJECTS`에서  
-가져올 수 있도록 구현하였다.
+가져올 수 있도록 구현했습니다.
 
 ### 기타 추가 구현
 
-1. SearchBox, CourseCard에 hover, focuse 이벤트 이펙트 추가
-2. CourseCard가 나열되는 개수 반응형으로 컨트롤  
-   [이미지]
-3. 검색결과 없을 때 대체 UI 제작
-   [이미지]
-4. 에러핸들링으로 서버 에러 발생시 에러 UI 대체
-   [이미지]
+1. Header, Footer 컴포넌트 추가
+2. SearchBox, CourseCard에 hover, focuse 이벤트 이펙트 추가
+3. CourseCard가 나열되는 개수 반응형으로 컨트롤  
+   ![ezgif com-video-to-gif-converter (4)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/62b637c9-88da-4fe9-8588-2fda6a947eb3)
+4. 검색결과 없을 때 대체 UI 제작  
+   <img width="1624" alt="스크린샷 2024-03-09 오후 9 14 30" src="https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/5042b00a-a85d-46cb-b510-fc21027de7b4">
+
+5. 에러핸들링으로 서버 에러 발생시 에러 UI 대체  
+   ![ezgif com-video-to-gif-converter (5)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/b0fc12f3-6463-4918-a21c-720da416b94c)
 
 ---
 
@@ -322,11 +327,11 @@ export default function convertSearchParamsToCourseObject(
 
 `⨯ useSearchParams() should be wrapped in a suspense boundary at page "/app/(main)/edu/form/FilterForm.tszx".`
 
-빌드 시 `useSearchParams`훅을 사용한 컴포넌트에서 위와 같은 에러가 발생했다.  
+빌드 시 `useSearchParams`훅을 사용한 컴포넌트에서 위와 같은 에러가 발생했습니다.  
 클라이언트 컴포넌트에서만 사용할 수 있는 `useSearchParams`는 위에 Suspense 경계가 래핑되지 않은 경우  
 Suspense 경계를 찾아 올라가고 결국 없으면 SSR에서 전체가 CSR로 로딩을 하는데 v14.0.5부턴 에러라고 판단하여  
-빌드에러를 발생시키고 있다.
-`useSearchParms`를 사용하는 컴포넌트를 Suspense로 감싸줘서 Suspense 경계를 만들어준다.
+빌드에러를 발생시키고 있어서  
+`useSearchParms`를 사용하는 컴포넌트를 Suspense로 감싸줘서 Suspense 경계를 만들어주었습니다.
 
 ```TypeScript
 import { Suspense } from 'react';
@@ -342,9 +347,9 @@ return (
 
 `The object passed as the value prop to the Context provider changes every render" consider using useMemo error?`
 
-현재 전역상태를 구현하기 위해 `useState`훅과 `Context API`를 사용하였다.  
+현재 전역상태를 구현하기 위해 `useState`훅과 `Context API`를 사용하고 있습니다.  
 다른 전역상태 라이브러리들과 다르게 공유할 상태가 필요한 Children을 Cotext.Provider로 랩핑을 해주는데  
-상태값이 변경되지 않았음에도 해당 Context를 사용하는 Children들은 전부 리렌더링이 발생하였다.
+상태값이 변경되지 않았음에도 해당 Context를 사용하는 Children들은 전부 리렌더링이 되었습니다.  
 
 ```TypeScript
   const contextsValue = React.useMemo(
@@ -353,4 +358,4 @@ return (
   );
 ```
 
-Cotext.Provider를 필요한 곳에만 랩핑하고 useMemo훅으로 상태값에 의존성을 넣어서 불필요한 렌더링은 발생시키지 않게 만들었다.
+Cotext.Provider를 필요한 곳에만 랩핑하고 useMemo훅으로 상태값에 의존성을 넣어서 불필요한 렌더링은 발생시키지 않게 만들었습니다.  
