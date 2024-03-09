@@ -117,10 +117,10 @@ yarn run dev
 
 ### 1. UI 구현 요구사항
 
-![ezgif com-video-to-gif-converter](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/f352783f-00d2-486c-8b9c-3f13c4020fcc)
+![ezgif com-video-to-gif-converter](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/f352783f-00d2-486c-8b9c-3f13c4020fcc)  
 UI는 제시되어있는 요구사항에 맞춰 구현했습니다.
 
-제한되어있는 시간내에 최대한의 효율을 만들어내기 위해 Tailwind CSS를 도입했습니다.
+제한되어있는 시간내에 최대한의 효율을 만들어내기 위해 Tailwind CSS를 도입했습니다.  
 클래스명을 따로 고려하지 않는 이점과 CSS파일을 별도로 관리하지 않고 주어진 기능에만  
 집중할 수 있게 도와주는 장점으로 `Tailwind CSS`를 선택하게 되었습니다.
 
@@ -203,7 +203,7 @@ export default function useOnSubmit(): TOnSubmitReturn {
 ![ezgif com-video-to-gif-converter (3)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/42dc408a-7234-42a4-85e1-0337f51cd580)
 
 url query로 서버컴포넌트에서 요청을 보내는게 아닌 클라이언트 컴포넌트에서 요청을 보내고  
-context api로 props drilling을 하여 courses 전역 변수를 구현했습니다.
+context api로 props drilling을 하여 courses 전역 변수를 구현했습니다.  
 offset값도 마찬가지로 search params가 변경되면 초기화가 되어야 하기에 위와 마찬가지로  
 전역변수로 구현했습니다.
 
@@ -330,8 +330,7 @@ export default function convertSearchParamsToCourseObject(
 빌드 시 `useSearchParams`훅을 사용한 컴포넌트에서 위와 같은 에러가 발생했습니다.  
 클라이언트 컴포넌트에서만 사용할 수 있는 `useSearchParams`는 위에 Suspense 경계가 래핑되지 않은 경우  
 Suspense 경계를 찾아 올라가고 결국 없으면 SSR에서 전체가 CSR로 로딩을 하는데 v14.0.5부턴 에러라고 판단하여  
-빌드에러를 발생시키고 있어서  
-`useSearchParms`를 사용하는 컴포넌트를 Suspense로 감싸줘서 Suspense 경계를 만들어주었습니다.
+빌드에러를 발생시키고 있어서 `useSearchParms`를 사용하는 컴포넌트를 Suspense로 감싸줘서 Suspense 경계를 만들어주었습니다.
 
 ```TypeScript
 import { Suspense } from 'react';
