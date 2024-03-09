@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { IOrgCourseListResponses } from '#types/course';
 import { ESSENTIAL_COURSE_KEYS } from '@constants/course';
+import { isAxiosError } from 'axios';
 import { api } from './index';
-import axios, { AxiosError, isAxiosError } from 'axios';
 
 export default async function handler(
   req: NextApiRequest,

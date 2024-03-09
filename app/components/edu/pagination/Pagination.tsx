@@ -14,11 +14,12 @@ const getPageCount = (endPage: number, currentPage: number) => {
   const slicePoint = Math.floor(PAGINATION.SHOW / 2);
   const startShow = Math.max(currentPage - slicePoint, 1);
   const newPages = new Array(PAGINATION.SHOW).fill(0);
+
   if (startShow + PAGINATION.SHOW - 1 >= endPage) {
     return newPages
       .map((_, i) => endPage - i)
       .filter((v) => v >= 1)
-      .sort();
+      .sort((a, b) => a - b);
   }
   return newPages.map((_, i) => startShow + i).filter((v) => v <= endPage);
 };

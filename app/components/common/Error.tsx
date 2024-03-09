@@ -1,14 +1,10 @@
 'use client';
 
+import React, { Fragment } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Fragment } from 'react';
 
-export default function Error({
-  error,
-}: {
-  error: Error & { message: string };
-}) {
+export default function Error({ error }: { error: { message: string } }) {
   const router = useRouter();
   return (
     <Fragment>
@@ -25,6 +21,7 @@ export default function Error({
           {error?.message ?? '페이지를 찾을 수 없습니다!'}
         </div>
         <button
+          type="button"
           className="border-filter-50 group m-2 inline-flex h-10 min-w-8 cursor-pointer 
           items-center rounded-3xl  bg-filter-50 px-5  py-2 text-filter-950 duration-200  hover:font-bold"
           onClick={() => router.back()}
