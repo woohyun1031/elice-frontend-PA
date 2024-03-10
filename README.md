@@ -24,7 +24,7 @@
 
 ## 목표
 
-- 엘리스 웹 서비스의 일부인 과목 검색(Course Search)의 간소화된 버전 주어진 요구사항에 맞게 구현
+- 엘리스 웹 서비스의 일부인 과목 검색(Course Search)의 간소화된 버전을 주어진 요구사항에 맞게 구현
 
 ---
 
@@ -199,8 +199,7 @@ export default function useOnSubmit(): TOnSubmitReturn {
 
 먼저 현재 페이지 기준으로 앞쪽,뒷쪽으로 각각 4개씩 최대 총 9개의 페이지를 구현할 수 있게 만들었습니다.  
 처음 레퍼런스 페이지에서 보여진 페이지 개수가 5개인 걸 감안하여, 동적으로 보여질 페이지의 개수를 지정할 수 있게 구현했습니다.
-
-![ezgif com-video-to-gif-converter (3)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/42dc408a-7234-42a4-85e1-0337f51cd580)
+![ezgif com-video-to-gif-converter (6)](https://github.com/woohyun1031/elice-frontend-PA/assets/94066263/3270b5f6-cbd4-4f27-a736-69fcc74f5baf)
 
 url query로 서버컴포넌트에서 요청을 보내는게 아닌 클라이언트 컴포넌트에서 요청을 보내고  
 context api로 props drilling을 하여 courses 전역 변수를 구현했습니다.  
